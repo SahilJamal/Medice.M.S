@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pharmacy-Stocks-Management-System</title>
+      <!-- Font Awesome -->
+      <link rel="stylesheet" th:href="@{/fontawesome/css/all.min.css}">
+      <link rel="stylesheet" th:href="@{/css/adminlte.min.css}">
+      <link rel="stylesheet" th:href="@{/css/style.css}">
+
+   </head>
+   <body class="hold-transition sidebar-mini layout-fixed">
+      <div class="wrapper">
+        
+       <div th:include="@{/main-sidebar.html}"></div>
+        
+       <div th:include="@{/navbar.html}"></div> 
+        
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+         <!-- Content Header (Page header) -->
+         <div class="content-header">
+            <div class="container-fluid">
+               <div class="row mb-2">
+                  <div class="col-sm-6">
+                        <h1 class="m-0" style="color: rgb(242,175,88);"><span class="fa fa-capsules"></span> Manage Medicines</h1>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-6">
+                     <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Medicines</li>
+                     </ol>
+                  </div>
+                  <!-- /.col -->
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+         </div>
+         <!-- /.content-header -->
+         <!-- Main content -->
+         <section class="content">
+            <div class="container-fluid">
+               <div class="card card-info">
+                  <div class="card-header">
+                     <h3 class="card-title"><center>Medicines Information</center></h3>
+                  </div>
+                  <!-- /.card-header -->
+
+               <div class="col-md-12">
+                  <table id="example1" class="table table-bordered table-striped">
+                     <thead>
+                        <tr>
+                           <th>Batch No.</th>
+                           <th>Medicine info</th>
+                           <th>Price</th>
+                           <th>Quantity</th>
+                           <th>Expiry Date</th>
+                           <th>Created By</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr th:each="lml : ${lml}">
+                           <td th:text="*{lml.id}">BTCH-123</td><td>
+                              <p class="info">Name: <b th:text="*{lml.name}">Tuseran</b></p>
+                              <p class="info"><small>Specs: <b th:text="*{lml.specification}">specs</b></small></p>
+                              <p class="info"><small>Category: <b th:text="*{lml.categoryName}">Category 1</b></small></p>
+                              <p class="info"><small>Type: <b th:text="*{lml.typeName}">Type 1</b></small></p>
+                              <p class="info"><small>Supplier: <b th:text="*{lml.supplierName}">Supplier 1</b></small></p>
+                              <p class="info"><small>Measurement: <b th:text="*{lml.measurement}">100mg</b></small></p>
+                              <p class="info"><small>Remarks: <b th:text="*{lml.remarks}">Remarks</b></small></p>
+                           </td>
+                           <td th:text="*{lml.price}">12.00</td>
+                           <td class="text-success"><b th:text="*{lml.quantityOnHand}">100</b></td>
+                           <td th:text="*{lml.expiryDate}">06-10-2021</td>
+                           <td th:text="*{lml.createdBy}">John Doe</td>
+                           <td class="text-right">
+                              <a class="btn btn-sm btn-success" th:href="@{/updateMedicineList/{id} (id = ${lml.id})}" ><i class="fa fa-pen"></i></a>
+                              <a class="btn btn-sm btn-danger" th:href="@{/deleteMedicineList/{id} (id = ${lml.id})}"><i class="fa fa-trash"></i></a>
+                           </td>
+                        </tr>
+                        </tbody>
+                  </table>
+               </div>
+            </div>
+      </div>
+
+   <!-- /.container-fluid -->
+   </section>
+   <!-- /.content -->
+   </div>
+   <!-- /.content-wrapper -->
+   </div>
+   <!-- jQuery -->
+   <script th:src="@{/jquery/jquery.min.js}"></script>
+   <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+   <script th:src="@{/js/adminlte.js}"></script>
+   <!-- DataTables  & Plugins -->
+   <script th:src="@{/tables/datatables/jquery.dataTables.min.js}"></script>
+   <script th:src="@{/tables/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+   <script th:src="@{/tables/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>s
+   <script th:src="@{/tables/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+   <script>
+      $(function () {
+         $("#example1").DataTable();
+      });
+   </script>
+</body>
+
+</html>

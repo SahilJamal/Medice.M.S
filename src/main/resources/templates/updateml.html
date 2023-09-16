@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pharmacy-Stocks-Management-System</title>
+      <!-- Font Awesome -->
+      <link rel="stylesheet" th:href="@{/fontawesome/css/all.min.css}">
+      <link rel="stylesheet" th:href="@{/css/adminlte.min.css}">
+      <link rel="stylesheet" th:href="@{/css/style.css}">
+
+   </head>
+   <body class="hold-transition sidebar-mini layout-fixed">
+      <div class="wrapper">
+        
+       <div th:include="@{/main-sidebar.html}"></div>
+        
+       <div th:include="@{/navbar.html}"></div>  
+        
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+         <!-- Content Header (Page header) -->
+         <div class="content-header">
+            <div class="container-fluid">
+               <div class="row mb-2">
+                  <div class="col-sm-6 animated bounceInRight">
+                     <h1 class="m-0" style="color: rgb(242,175,88);"><span class="fa fa-capsules"></span> Add Medicine</h1>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-6">
+                     <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Add Medicine</li>
+                     </ol>
+                  </div>
+                  <!-- /.col -->
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+         </div>
+         <!-- /.content-header -->
+         <!-- Main content -->
+         <section class="content">
+            <div class="container-fluid">
+               <div class="card card-info">
+                  <div class="card-header">
+                     <h3 class="card-title">Medicine Information</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form method="post" role="form" th:action="@{/updateMedicineLists/{id} (id = ${ml.id})}" th:object="${ml}">
+                     <div class="card-body">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="card-header">
+                                 <span class="fa fa-capsules"> Medicine Information</span>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Batch Number</label>
+                                       <input type="number" class="form-control" placeholder="BTCH-123" disabled th:field="*{id}">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Name</label>
+                                       <input type="text" class="form-control" placeholder="medicine name" required th:field="*{name}">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Specification</label>
+                                       <input type="text" class="form-control" placeholder="specs" required th:field="*{specification}">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Category Name</label>
+                                       <select class="form-control" th:field="*{categoryName}">
+                                          <option th:each="lmcl : ${lmcl}" th:text="${lmcl.categoryName}" th:value="${lmcl.categoryName}">Category 1</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Type Name</label>
+                                       <select class="form-control" th:field="*{typeName}">
+                                          <option th:each="lmtl : ${lmtl}" th:text="${lmtl.typeName}" th:value="${lmtl.typeName}" >Type 1</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Supplier Name</label>
+                                       <select class="form-control" th:field="*{supplierName}">
+                                          <option th:each="lsl : ${lsl}" th:text="${lsl.supplierName}" th:value="${lsl.supplierName}" >Supplier 1</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Measurement</label>
+                                       <select class="form-control" th:field="*{measurement}">
+                                          <option th:value="100">100 mg</option>
+                                          <option th:value="300">200 mg</option>
+                                          <option th:value="300">300 mg</option>
+                                          <option th:value="400">400 mg</option>
+                                          <option th:value="500">500 mg</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Remarks</label>
+                                       <input type="text" class="form-control" placeholder="remarks" required th:field="*{remarks}">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Price</label>
+                                       <input type="number" class="form-control" placeholder="price" required th:field="*{price}">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Expiry Date</label>
+                                       <input type="date" class="form-control" required th:field="*{expiryDate}">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Quantity on Hand</label>
+                                       <input type="number" class="form-control" placeholder="quantity" required th:field="*{quantityOnHand}">
+                                    </div>
+                                 </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Created By</label>
+                                       <input type="text" class="form-control" placeholder="sahil" required th:field="*{createdBy}">
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                     </div>
+                     <!-- /.card-body -->
+
+                     <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <!-- /.container-fluid -->
+         </section>
+         <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+   </div>
+   <!-- ./wrapper -->
+   <!-- jQuery -->
+   <script th:src="@{/jquery/jquery.min.js}"></script>
+   <script th:src="@{/js/adminlte.js}"></script>
+
+</body>
+
+</html>

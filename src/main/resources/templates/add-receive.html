@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pharmacy-Stocks-Management-System</title>
+      <!-- Font Awesome -->
+       <link rel="stylesheet" th:href="@{/fontawesome/css/all.min.css}">
+      <link rel="stylesheet" th:href="@{/css/adminlte.min.css}">
+      <link rel="stylesheet" th:href="@{/css/style.css}">
+
+   </head>
+   <body class="hold-transition sidebar-mini layout-fixed">
+      <div class="wrapper">
+      
+       <div th:include="@{/main-sidebar.html}"></div>
+        
+       <div th:include="@{/navbar.html}"></div>
+        
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+         <!-- Content Header (Page header) -->
+         <div class="content-header">
+            <div class="container-fluid">
+               <div class="row mb-2">
+                  <div class="col-sm-6 animated bounceInRight">
+                     <h1 class="m-0" style="color: rgb(242,175,88);"><span class="fa fa-arrow-circle-right"></span> Receiving</h1>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-6">
+                     <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Receiving</li>
+                     </ol>
+                  </div>
+                  <!-- /.col -->
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+         </div>
+         <!-- /.content-header -->
+         <!-- Main content -->
+         <section class="content">
+            <div class="container-fluid">
+               <div class="card card-info">
+                  <div class="card-header">
+                     <h3 class="card-title">Receiving Information</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form method="post" role="form" th:action="@{/saveReceiving}" th:object="${r}">
+                     <div class="card-body">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="card-header">
+                                 <span class="fa fa-arrow-circle-right"> Receiving Information</span>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Supplier Name</label>
+                                       <select class="form-control" th:field="*{supplierName}">
+                                          <option th:each="lsl : ${lsl}" th:text="${lsl.supplierName}" th:value="${lsl.supplierName}" >Supplier 1</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Medicine Name</label>
+                                       <select class="form-control" th:field="*{medicineName}" >
+                                          <option th:each="lml : ${lml}" th:text="${lml.name}" th:value="${lml.name}" >Medicine 1</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Price</label>
+                                       <input type="number" class="form-control" required placeholder="Price" th:field="*{price}" >
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Quantity</label>
+                                       <input type="number" class="form-control" required placeholder="Quantity" th:field="*{quantity}" >
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Amount</label>
+                                       <input type="number" class="form-control" required placeholder="Amount" th:field="*{amount}" >
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Remarks</label>
+                                       <input type="text" class="form-control" required placeholder="Remarks" th:field="*{remarks}" >
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Reference Number</label>
+                                       <input type="text" class="form-control" required placeholder="REF-123" th:field="*{referenceNumber}" >
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Date Received</label>
+                                       <input type="date" class="form-control" required th:field="*{dateReceived}" >
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Processed By</label>
+                                       <input type="text" class="form-control" placeholder="John Doe" required th:field="*{processedBy}" >
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                     </div>
+                     <!-- /.card-body -->
+
+                     <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <!-- /.container-fluid -->
+         </section>
+         <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+   </div>
+   <!-- ./wrapper -->
+   <!-- jQuery -->
+  <script th:src="@{/jquery/jquery.min.js}"></script>
+   <script th:src="@{/js/adminlte.js}"></script>
+
+</body>
+
+</html>

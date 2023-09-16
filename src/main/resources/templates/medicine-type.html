@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pharmacy-Stocks-Management-System</title>
+      <!-- Font Awesome -->
+      <link rel="stylesheet" th:href="@{/fontawesome/css/all.min.css}">
+      <link rel="stylesheet" th:href="@{/css/adminlte.min.css}">
+      <link rel="stylesheet" th:href="@{/css/animate.min.css}">
+      <link rel="stylesheet" th:href="@{/css/style.css}">
+
+   </head>
+   <body class="hold-transition sidebar-mini layout-fixed">
+      <div class="wrapper">
+		
+		<div th:include="@{/main-sidebar.html}"></div>
+        
+        <div th:include="@{/navbar.html}"></div>        
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+         <!-- Content Header (Page header) -->
+         <div class="content-header">
+            <div class="container-fluid">
+               <div class="row mb-2">
+                  <div class="col-sm-6">
+                        <h1 class="m-0" style="color: rgb(242,175,88);"><span class="fa fa-pills"></span> Medicine Types List</h1>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-6">
+                     <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Medicine Type</li>
+                     </ol>
+                  </div>
+                  <!-- /.col -->
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+         </div>
+         <!-- /.content-header -->
+         <!-- Main content -->
+         <section class="content">
+            <div class="container-fluid">
+               <div class="card card-info">
+                  <div class="card-header">
+                     <h3 class="card-title"><center>Medicine Type Information</center></h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form method="post" role="form" th:action="@{/saveMedicineTypeList}" th:object="${mtl}">
+                     <div class="card-body">
+                        <div class="row">
+                           <div class="col-md-3">
+                              <div class="card-header">
+                                 <span class="fa fa-pills"> Medicine Type Information</span>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12">
+                                    <div class="form-group">
+                                       <label>Type Name</label>
+                                       <input type="text" class="form-control" required placeholder="type name" th:field="*{typeName}">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <div class="form-group">
+                                       <label>Created Date</label>
+                                       <input type="date" class="form-control" required th:field="*{createdDate}">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <div class="form-group">
+                                       <label>Created By</label>
+                                       <input type="text" class="form-control" placeholder="John Doe" required th:field="*{createdBy}">
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="card-footer">
+                                 <button type="submit" class="btn btn-primary">Save</button>
+                              </div>
+                  </form>
+               </div>
+
+               <div class="col-md-9" style="border-left: 1px solid #ddd;">
+                  <table id="example1" class="table table-bordered table-striped">
+                     <thead>
+                        <tr>
+                           <th>Id</th>
+                           <th>Type Name</th>
+                           <th>Date Created</th>
+                           <th>Created By</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr th:each="lmtl : ${lmtl}">
+                           <td th:text="*{lmtl.id}">Id</td>
+                           <td th:text="*{lmtl.typeName}">Type 1</td>
+                           <td th:text="*{lmtl.createdDate}">06-10-2021</td>
+                           <td th:text="*{lmtl.createdBy}">John Doe</td>
+                           <td class="text-right">
+                              <a class="btn btn-sm btn-success" th:href="@{/updateMedicineTypeList/{id} (id = ${lmtl.id})}" ><i class="fa fa-pen"></i></a>
+                              <a class="btn btn-sm btn-danger" th:href="@{/deleteMedicineTypeList/{id} (id = ${lmtl.id})}" ><i class="fa fa-trash"></i></a>
+                           </td>
+                        </tr>
+                        </tbody>
+                  </table>
+               </div>
+            </div>
+      </div>
+
+   </div>
+   <!-- /.card-body -->
+   </div>
+   </div>
+   <!-- /.container-fluid -->
+   </section>
+   <!-- /.content -->
+   </div>
+   <!-- /.content-wrapper -->
+   </div>
+   <!-- jQuery -->
+   <script th:src="@{/jquery/jquery.min.js}"></script>
+   <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+   <script th:src="@{/js/adminlte.js}"></script>
+   <!-- DataTables  & Plugins -->
+   <script th:src="@{/tables/datatables/jquery.dataTables.min.js}"></script>
+   <script th:src="@{/tables/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+   <script th:src="@{/tables/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>s
+   <script th:src="@{/tables/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+   <script>
+      $(function () {
+         $("#example1").DataTable();
+      });
+   </script>
+</body>
+
+</html>

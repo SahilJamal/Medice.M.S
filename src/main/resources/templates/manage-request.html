@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org" >
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pharmacy-Stocks-Management-System</title>
+      <!-- Font Awesome -->
+      <link rel="stylesheet" th:href="@{/fontawesome/css/all.min.css}">
+      <link rel="stylesheet" th:href="@{/css/adminlte.min.css}">
+      <link rel="stylesheet" th:href="@{/css/style.css}">
+<style type="text/css">
+   .info{
+      font-size: 12px;
+      padding: 2px;
+   }
+</style>
+   </head>
+   <body class="hold-transition sidebar-mini layout-fixed">
+      <div class="wrapper">
+        
+       <div th:include="@{/main-sidebar.html}"></div>
+        
+       <div th:include="@{/navbar.html}"></div> 
+        
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+         <!-- Content Header (Page header) -->
+         <div class="content-header">
+            <div class="container-fluid">
+               <div class="row mb-2">
+                  <div class="col-sm-6">
+                        <h1 class="m-0" style="color: rgb(242,175,88);"><span class="fa fa-file-prescription"></span> Manage Requests</h1>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-6">
+                     <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Medicines</li>
+                     </ol>
+                  </div>
+                  <!-- /.col -->
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+         </div>
+         <!-- /.content-header -->
+         <!-- Main content -->
+         <section class="content">
+            <div class="container-fluid">
+               <div class="card card-info">
+                  <div class="card-header">
+                     <h3 class="card-title"><center>Request Information</center></h3>
+                  </div>
+                  <!-- /.card-header -->
+
+               <div class="col-md-12">
+                  <table id="example1" class="table table-bordered table-striped">
+                     <thead>
+                        <tr>
+                           <th>Request info</th>
+                           <th>Measurement</th>
+                           <th>Description</th>
+                           <th>Price</th>
+                           <th>Quantity</th>
+                           <th>Amount</th>
+                           <th>Date Processed</th>
+                           <th>Processed By</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr th:each="lml : ${lrl}">
+                           <td>
+                              <p class="info">Request No.: <b th:text="*{lml.id}">RQST-123</b></p>
+                              <p class="info"><small>Medicine: <b th:text="*{lml.medicineName}">Neozep</b></small></p>
+                              <p class="info"><small>Specs: <b th:text="*{lml.specification}">specs</b></small></p>
+                              <p class="info"><small>Supplier: <b th:text="*{lml.supplierName}">Supplier 1</b></small></p>
+                              <p class="info"><small>Category: <b th:text="*{lml.categoryName}">Category 1</b></small></p>
+                              <p class="info"><small>Type: <b th:text="*{lml.typeName}">Type 1</b></small></p>
+                           </td>
+                           <td th:text="*{lml.measurement}">100mg</td>
+                           <td th:text="*{lml.description}">Description</td>
+                           <td th:text="*{lml.price}">12.00</td>
+                           <td class="text-success"><b th:text="*{lml.quantity}">100</b></td>
+                           <td th:text="*{lml.amount}">112.00</td>
+                           <td th:text="*{lml.dateProcessed}">06-10-2021</td>
+                           <td th:text="*{lml.processedBy}">John Doe</td>
+                           <td class="text-right">
+                              <a class="btn btn-sm btn-success" th:href="@{/updateRequestList/{id} (id = ${lml.id})}" ><i class="fa fa-pen"></i></a>
+                              <a class="btn btn-sm btn-danger" th:href="@{/deleteRequestList/{id} (id = ${lml.id})}"><i class="fa fa-trash"></i></a>
+                           </td>
+                        </tr>
+                        </tbody>
+                  </table>
+               </div>
+            </div>
+      </div>
+
+   <!-- /.container-fluid -->
+   </section>
+   <!-- /.content -->
+   </div>
+   <!-- /.content-wrapper -->
+   </div>
+   <!-- jQuery -->
+   <script th:src="@{/jquery/jquery.min.js}"></script>
+   <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+   <script th:src="@{/js/adminlte.js}"></script>
+   <!-- DataTables  & Plugins -->
+   <script th:src="@{/tables/datatables/jquery.dataTables.min.js}"></script>
+   <script th:src="@{/tables/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+   <script th:src="@{/tables/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>s
+   <script th:src="@{/tables/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+   <script>
+      $(function () {
+         $("#example1").DataTable();
+      });
+   </script>
+</body>
+
+</html>

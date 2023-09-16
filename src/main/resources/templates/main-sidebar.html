@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+<head>
+
+</head>
+<body>
+
+	 <!-- Main Sidebar Container -->
+         <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: rgba(44,62,80);">
+                        <!-- Brand Logo -->
+            <a th:href="@{index}" class="brand-link animated swing">
+            <img th:src="@{/img/logo.png}" alt="DSMS Logo" width="200">
+            </a>
+            <!-- Sidebar -->
+            <div class="sidebar" style="margin-top: -65px">
+               <!-- Sidebar user panel (optional) -->
+               <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                  <div class="image">
+                     <img th:src="@{/img/profile.png}" class="img-circle elevation-2" alt="User Image">
+                  </div>
+                  <div class="info">
+                     <a th:href="@{index}" class="d-block">John Doe</a>
+                  </div>
+               </div>
+               <!-- Sidebar Menu -->
+               <nav class="mt-2">
+                  <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                     <li class="nav-item">
+                        <a th:href="@{index}" class="nav-link">
+                           <i class="nav-icon fa fa-clinic-medical"></i>
+                           <p>
+                              Dashboard
+                           </p>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a th:href="@{/medicine-type}" class="nav-link">
+                           <i class="nav-icon fa fa-pills"></i>
+                           <p>
+                              Medicine Type
+                           </p>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a th:href="@{/medicine-category}" class="nav-link">
+                           <i class="nav-icon fa fa-tablets"></i>
+                           <p>
+                              Medicine Category
+                           </p>
+                        </a>
+                     </li>
+
+                     <li class="nav-item">
+                        <a th:href="@{/supplier}" class="nav-link">
+                           <i class="nav-icon fa fa-truck"></i>
+                           <p>
+                              Supplier
+                           </p>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="#" class="nav-link">
+                           <i class="nav-icon fas fa-capsules"></i>
+                           <p>
+                              Medicine
+                           </p>
+                              <i class="right fas fa-angle-left"></i>
+                        </a>
+                        <ul class="nav nav-treeview">
+                           <li class="nav-item">
+                              <a th:href="@{/add-medicine}" class="nav-link">
+                                 <i class="nav-icon fa fa-plus"></i>
+                                 <p>Add</p>
+                              </a>
+                           </li>
+                           <li class="nav-item">
+                              <a th:href="@{/manage-medicine}" class="nav-link">
+                                 <i class="nav-icon fa fa-list"></i>
+                                 <p>Manage</p>
+                              </a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="nav-item">
+                        <a href="#" class="nav-link">
+                           <i class="nav-icon fa fa-arrow-circle-right"></i>
+                           <p>
+                              Receiving
+                           </p>
+                              <i class="right fas fa-angle-left"></i>
+                        </a>
+                        <ul class="nav nav-treeview">
+                           <li class="nav-item">
+                              <a th:href="@{/add-Receiving}" class="nav-link">
+                                 <i class="nav-icon fa fa-plus"></i>
+                                 <p>Receive</p>
+                              </a>
+                           </li>
+                           <li class="nav-item">
+                              <a th:href="@{/manage-receive}" class="nav-link">
+                                 <i class="nav-icon fa fa-list"></i>
+                                 <p>Manage</p>
+                              </a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="nav-item">
+                        <a href="#" class="nav-link">
+                           <i class="nav-icon fa fa-arrow-circle-left"></i>
+                           <p>
+                              Return
+                           </p>
+                              <i class="right fas fa-angle-left"></i>
+                        </a>
+                        <ul class="nav nav-treeview">
+                           <li class="nav-item">
+                              <a th:href="@{add-return}" class="nav-link">
+                                 <i class="nav-icon fa fa-plus"></i>
+                                 <p>Return</p>
+                              </a>
+                           </li>
+                           <li class="nav-item">
+                              <a th:href="@{manage-return}" class="nav-link">
+                                 <i class="nav-icon fa fa-list"></i>
+                                 <p>Manage</p>
+                              </a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="nav-item">
+                        <a href="#" class="nav-link">
+                           <i class="nav-icon fa fa-layer-group"></i>
+                           <p>
+                              Stocks
+                           </p>
+                              <i class="right fas fa-angle-left"></i>
+                        </a>
+                        <ul class="nav nav-treeview">
+                           <li class="nav-item">
+                              <a th:href="@{add-stock}" class="nav-link">
+                                 <i class="nav-icon fa fa-plus"></i>
+                                 <p>Add</p>
+                              </a>
+                           </li>
+                           <li class="nav-item">
+                              <a th:href="@{manage-stock}" class="nav-link">
+                                 <i class="nav-icon fa fa-list"></i>
+                                 <p>Manage</p>
+                              </a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="nav-item">
+                        <a href="#" class="nav-link">
+                           <i class="nav-icon fa fa-file-prescription"></i>
+                           <p>
+                              Request
+                           </p>
+                              <i class="right fas fa-angle-left"></i>
+                        </a>
+                        <ul class="nav nav-treeview">
+                           <li class="nav-item">
+                              <a th:href="@{add-request}" class="nav-link">
+                                 <i class="nav-icon fa fa-plus"></i>
+                                 <p>Add</p>
+                              </a>
+                           </li>
+                           <li class="nav-item">
+                              <a th:href="@{manage-request}" class="nav-link">
+                                 <i class="nav-icon fa fa-list"></i>
+                                 <p>Manage</p>
+                              </a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="nav-item">
+                        <a href="database.html" class="nav-link">
+                           <i class="nav-icon fa fa-database"></i>
+                           <p>
+                              Database
+                           </p>
+                        </a>
+                     </li>
+                  
+                  </ul>
+               </nav>
+               <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+         </aside>
+
+</body>
+</html>
